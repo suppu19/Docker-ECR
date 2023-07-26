@@ -15,13 +15,11 @@ pipeline {
             }
         }
     }        
-        stage('Building image') {
-            steps{
-                 script {
-                 dockerImage = docker.build "${IMAGE_REPO_NAME}:${IMAGE_TAG}"
-               }
-           }
-        }  
+        stage("Build the docker image"){
+                steps {
+                    sh "docker build -t ${IMAGE_REPO_NAME} ."
+                }
+            } 
     }
 }
          
