@@ -18,6 +18,9 @@ pipeline {
         stage("Build the docker image"){
                 steps {
                     sh "docker build -t ${IMAGE_REPO_NAME} ."
+                    sh "docker tag niznix-image:latest 492840825928.dkr.ecr.ap-south-1.amazonaws.com/niznix-image:latest"
+                    sh "docker push 492840825928.dkr.ecr.ap-south-1.amazonaws.com/niznix-image:latest"
+                    
                 }
             } 
     }
